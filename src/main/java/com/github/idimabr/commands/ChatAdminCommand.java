@@ -35,6 +35,7 @@ public class ChatAdminCommand implements CommandExecutor {
 
         final Player player = (Player) sender;
         final ChannelController channelController = plugin.getChannelController();
+        final StorageRepository repository = plugin.getRepository();
         final DataController dataController = plugin.getDataController();
 
         if(args.length == 2 && args[0].equalsIgnoreCase("delete")){
@@ -101,6 +102,7 @@ public class ChatAdminCommand implements CommandExecutor {
             }
 
             data.setChannel(channel);
+            repository.changeChannel(player, channel.getName().toLowerCase());
             player.sendMessage("§aYou changed channel of '" + target.getName() + "' to '" + channel.getName().toLowerCase() + "'.");
             return true;
         } else{
