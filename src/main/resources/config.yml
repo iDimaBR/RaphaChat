@@ -1,0 +1,32 @@
+Database:
+  type: "mysql" # sqlite ou mysql
+  sqlite:
+    fileName: "database.db"
+  mysql:
+    address: "localhost:3306"
+    username: "root"
+    password: ""
+    database: "raphachat"
+
+Channels:
+  global:
+    name: "global"
+    command: g
+    perform: ALL
+    radius: 0
+    tag: "&7[g]&f"
+    format: "{channel} {sender}: {message}"
+  local:
+    name: "local"
+    command: l
+    perform: LOCAL
+    radius: 30
+    tag: "&e[l]&f"
+    format: "{channel} {sender}: {message}"
+  whisper:
+    name: "whisper"
+    command: w
+    perform: LOCAL
+    radius: 3
+    tag: "&7[!]&f"
+    format: "{channel} {sender} whisper to you: {message}"
