@@ -7,7 +7,7 @@ import lombok.AllArgsConstructor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerChatEvent;
+import org.bukkit.event.player.AsyncPlayerChatEvent;
 
 @AllArgsConstructor
 public class ChatListener implements Listener {
@@ -15,7 +15,7 @@ public class ChatListener implements Listener {
     private RaphaChat plugin;
 
     @EventHandler
-    public void onChat(PlayerChatEvent e){
+    public void onChat(AsyncPlayerChatEvent e){
         final Player player = e.getPlayer();
         final PlayerData data = plugin.getDataController().getData(player.getUniqueId());
         final Channel channel = data.getChannel();

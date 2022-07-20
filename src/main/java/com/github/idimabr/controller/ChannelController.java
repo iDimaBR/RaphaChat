@@ -10,6 +10,8 @@ import lombok.RequiredArgsConstructor;
 import org.bukkit.configuration.ConfigurationSection;
 
 import java.util.Map;
+import java.util.Objects;
+import java.util.logging.Level;
 
 @RequiredArgsConstructor
 @Getter
@@ -43,10 +45,21 @@ public class ChannelController {
             final ChannelType type = ChannelType.valueOf(channel.getString("perform"));
             final int radius = channel.getInt("radius");
             final String tag = channel.getString("tag");
+            final String color = channel.getString("color");
             final String format = channel.getString("format");
 
-            channelMap.put(name.toLowerCase(), new Channel(name, command, radius, type, format, tag));
-            plugin.getLogger().info("Channel '" + name + "' loaded.");
+            channelMap.put(
+                    Objects.requireNonNull(name).toLowerCase(),
+                    new Channel(
+                            name,
+                            command,
+                            radius,
+                            type,
+                            format,
+                            Objects.requireNonNull(tag),
+                            Objects.requireNonNull(color)
+                    ));
+            plugin.getLogger().log(Level.INFO,"Channel '" + name + "' loaded.");
         }
     }
 }

@@ -1,3 +1,6 @@
 name: RaphaChat
 version: '${project.version}'
 main: com.github.idimabr.RaphaChat
+commands:
+  chat:
+    aliases: [channel,ch]

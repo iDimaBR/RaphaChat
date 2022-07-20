@@ -23,7 +23,7 @@
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>3.2.0</version>
                 <configuration>
-                    <outputDirectory>C:\Users\rapha\Documents\Servidores\Survival 1.16.5\plugins</outputDirectory>
+                    <outputDirectory>C:\Users\rapha\Documents\Servidores\Servidor teste\plugins</outputDirectory>
                 </configuration>
             </plugin>
             <plugin>

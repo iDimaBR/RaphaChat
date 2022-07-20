@@ -1,5 +1,6 @@
 package com.github.idimabr;
 
+import com.github.idimabr.commands.ChatCommand;
 import com.github.idimabr.controller.ChannelController;
 import com.github.idimabr.controller.DataController;
 import com.github.idimabr.listener.ChatListener;
@@ -17,7 +18,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 @Getter
 public final class RaphaChat extends JavaPlugin {
 
-    private static RaphaChat plugin;
     private ConfigUtil config;
     private SQLConnector connection;
     private StorageRepository repository;
@@ -25,11 +25,21 @@ public final class RaphaChat extends JavaPlugin {
     private ChannelController channelController;
 
     @Override
+    public void onLoad(){
+        config = new ConfigUtil(this, "config.yml");
+    }
+
+    @Override
     public void onEnable() {
         // Plugin startup logic
-        loadControllers();
         loadStorage();
         loadListeners();
+        loadCommands();
+        loadControllers();
+    }
+
+    private void loadCommands(){
+        getCommand("chat").setExecutor(new ChatCommand(this));
     }
 
     private void loadListeners() {
@@ -47,7 +57,7 @@ public final class RaphaChat extends JavaPlugin {
     }
 
     private void loadControllers(){
-        dataController = new DataController();
+        dataController = new DataController(this);
         channelController = new ChannelController(this);
         channelController.loadChannels();
     }
