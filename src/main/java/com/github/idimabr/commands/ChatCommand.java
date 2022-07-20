@@ -24,6 +24,11 @@ public class ChatCommand implements CommandExecutor {
             return false;
         }
 
+        if(!sender.hasPermission("raphachat.changechannel")){
+            sender.sendMessage("§cDon't have permission");
+            return false;
+        }
+
         final Player player = (Player) sender;
         final ChannelController channelController = plugin.getChannelController();
         final DataController dataController = plugin.getDataController();
@@ -34,6 +39,7 @@ public class ChatCommand implements CommandExecutor {
             final Channel channel = channelController.getChannel(targetChannel.toLowerCase());
             if(channel == null){
                 player.sendMessage("§cChannel '" + targetChannel + "' not found.");
+                player.sendMessage("§cChannels: §7" + channelController.getChannelList());
                 return false;
             }
 

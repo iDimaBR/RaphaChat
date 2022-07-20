@@ -8,6 +8,11 @@ Database:
     password: ""
     database: "raphachat"
 
+Filters:
+  example:
+    filter: "bitch"
+    replaced: "@#%"
+
 Channels:
   global:
     name: "global"
@@ -16,7 +21,7 @@ Channels:
     radius: 0
     tag: "&7[g]&f"
     color: "&7"
-    format: "{channel} {sender}: {color}{message}"
+    format: "{channel} {group}{sender}: {color}{message}"
   local:
     name: "local"
     command: l
@@ -24,7 +29,7 @@ Channels:
     radius: 30
     tag: "&e[l]&f"
     color: "&e"
-    format: "{channel} {sender}: {color}{message}"
+    format: "{channel} {group}{sender}: {color}{message}"
   whisper:
     name: "whisper"
     command: w
@@ -32,4 +37,4 @@ Channels:
     radius: 3
     tag: "&7[!]&f"
     color: "&8"
-    format: "{channel} {sender} &7whisper to you: {color}{message}"
+    format: "{channel} {group}{sender} &7whisper to you: {color}{message}"

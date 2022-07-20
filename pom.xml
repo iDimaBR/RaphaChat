@@ -93,5 +93,11 @@
             <artifactId>sql-provider</artifactId>
             <version>main-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>com.github.MilkBowl</groupId>
+            <artifactId>VaultAPI</artifactId>
+            <version>1.7</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 </project>

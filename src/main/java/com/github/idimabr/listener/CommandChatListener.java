@@ -30,7 +30,7 @@ public class CommandChatListener implements Listener {
         if(channel == null) return;
 
         final String message = StringUtils.join(args, " ", 1, args.length);
-        channel.typing(player, message);
+        channel.typing(player, channelController.filterMessage(message));
         e.setCancelled(true);
     }
 }

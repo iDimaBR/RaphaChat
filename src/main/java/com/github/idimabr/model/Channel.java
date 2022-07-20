@@ -1,5 +1,6 @@
 package com.github.idimabr.model;
 
+import com.github.idimabr.RaphaChat;
 import lombok.Getter;
 import lombok.Setter;
 import org.bukkit.Bukkit;
@@ -27,10 +28,13 @@ public class Channel {
     }
 
     public void typing(Player origin, String message){
-        final String replaceFormat = format.replace("{channel}", tag)
+        final String replaceFormat = format
+                .replace("&","§")
+                .replace("{channel}", tag)
                 .replace("{sender}", origin.getName())
                 .replace("{color}", color)
-                .replace("{message}", message.replace("&","§"));
+                .replace("{message}", message.replace("&","§"))
+                .replace("{group}", RaphaChat.getChat().getPlayerPrefix(origin).replace("&","§"));
 
         if(type.equals(ChannelType.ALL)) {
             Bukkit.getOnlinePlayers().forEach(target -> target.sendMessage(replaceFormat));
